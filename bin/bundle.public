@@ -1,0 +1,28 @@
+#!/bin/bash
+
+trap on_exit INT
+
+function save()
+{
+  mv ~/.bundle/config ~/.bundle/config.bak
+}
+
+function restore()
+{
+  mv ~/.bundle/config.bak ~/.bundle/config
+  if [ $? -ne 0 ]; then
+    echo "Failed to restore ~/.bundle/config"
+    exit 1
+  fi
+}
+
+function on_exit
+{
+  if [ -d ~/.bundle/config.bak ]; then
+    restore
+  fi
+}
+
+save
+bundle $*
+restore

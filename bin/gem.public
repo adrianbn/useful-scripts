@@ -1,0 +1,4 @@
+#!/bin/sh
+cmd=$1
+shift
+gem $cmd --config-file ~/.gemrc_public $*
