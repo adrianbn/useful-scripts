@@ -1,0 +1,43 @@
+call pathogen#infect()
+call pathogen#helptags()
+set history=700
+set nocompatible
+set backspace=2
+filetype plugin indent on
+set ignorecase
+set hlsearch
+set incsearch
+set showmatch
+set nobackup
+set noswapfile
+set nowb
+set smarttab
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set ai "Auto indent"
+set si "Smart indent"
+set wrap "Wrap lines"
+syntax on
+set ruler
+set number
+set bg=dark
+
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+let g:neocomplcache_enable_at_startup = 1
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"

@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/adrian.bravo/Desktop/lfp/cookbook_sigval'
+let g:netrw_dirhist_2='/Users/adrian.bravo/Downloads/cookbook_ossec_bsterne/.kitchen'
+let g:netrw_dirhist_3='/Users/adrian.bravo/code/simstim/build'
